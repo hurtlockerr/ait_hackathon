@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="description"  content="Free Carpool service. Car pool, rideshare, for commuter or casual carpool. Help reduce commuting time and traffic." />
+<meta name="keywords"  content="carpool, commute, rideshare, carpooling, india" /><link rel="shortcut icon" type="image/x-icon" href="logo.jpg" /><title>traFIX</title><link type="text/css" href="http://www.carpooling.in/ui-160/css/resetandgrid.css" rel="stylesheet" />
+<link type="text/css" href="http://www.carpooling.in/ui-160/css/style.php" rel="stylesheet" />
+<script src="http://yui.yahooapis.com/2.4.0/build/yahoo-dom-event/yahoo-dom-event.js" type="text/javascript"></script>
+<script src="http://yui.yahooapis.com/2.4.0/build/element/element-beta-min.js" type="text/javascript"></script>
+<script src="http://yui.yahooapis.com/2.4.0/build/connection/connection-min.js" type="text/javascript"></script>
+<script src="http://yui.yahooapis.com/2.4.0/build/datasource/datasource-beta-min.js" type="text/javascript"></script>
+<script src="http://yui.yahooapis.com/2.4.0/build/autocomplete/autocomplete-min.js" type="text/javascript"></script>
+</head>
+<body background="images.jpg">
+<img class="logo-custom" src="logo.jpg" alt="" height="100" width="100">
+    <div class="container">
+        
+       <div class="span-18">  
+<h1>Find a regular carpool</h1>
+<form name="searchForm" method="get" action="http://www.carpooling.in/search/regular/">
+I am looking for&nbsp;&nbsp;
+<input type="radio" name="type" value="both" checked="checked"/>&nbsp;Drivers or Passengers&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="type" value="car" />&nbsp;Drivers only&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="type" value="passenger" />&nbsp;Passengers only
+<br />
+
+<script type="text/javascript">
+//<![CDATA[
+	// departure area datasource
+	var areasSchema = ['results', 'areaname', 'area_id'];
+	var areasDS = new YAHOO.widget.DS_XHR("http://www.carpooling.in/api/areas/", areasSchema);
+	areasDS.responseType = YAHOO.widget.DS_XHR.TYPE_JSON;
+	areasDS.scriptQueryParam = "q";
+	areasDS.scriptQueryAppend = "c=" + "3238";
+	// caching disabled in order to avoid "cached" result when changing the big city
+	areasDS.maxCacheEntries = 0;  	
+	
+	var departureAreaSelectHandler = function(sType, aArgs) {
+		var aData = aArgs[2]; //array of the data for the item as returned by the DataSource
+		document.getElementById("departureAreaId").value = aData[1];
+	};
+	
+	var autocompleteDepartureArea = new YAHOO.widget.AutoComplete("departureArea", "departureAreaContainer", areasDS);  
+	autocompleteDepartureArea.maxResultsDisplayed = 100;
+	autocompleteDepartureArea.itemSelectEvent.subscribe(departureAreaSelectHandler);
+//]]>	
+</script>  
+
+<div>
+<br/>
+<input id="searchSubmit" name="submit" type="submit" value="search" />
+</div>
+<script type="text/javascript">   
+//<![CDATA[
+	var areasDS2 = new YAHOO.widget.DS_XHR("http://www.carpooling.in/api/areas/", areasSchema);
+	areasDS2.responseType = YAHOO.widget.DS_XHR.TYPE_JSON;
+	areasDS2.scriptQueryParam = "q";
+	areasDS2.scriptQueryAppend = "c=" + "3238";
+	// caching disabled in order to avoid "cached" result when changing the big city
+	areasDS2.maxCacheEntries = 0;  	
+		
+	var destinationAreaSelectHandler = function(sType, aArgs) {
+		var aData = aArgs[2]; //array of the data for the item as returned by the DataSource
+		document.getElementById("destinationAreaId").value = aData[1];
+		//document.getElementById("departureCityId").value = aData[1];
+	};
+
+	var autocompleteDestinationArea = new YAHOO.widget.AutoComplete("destinationArea", "destinationAreaContainer", areasDS2);  
+	autocompleteDestinationArea.maxResultsDisplayed = 100;
+	autocompleteDestinationArea.itemSelectEvent.subscribe(destinationAreaSelectHandler);
+//]]>
+</script>  
+
+</form>
+<br/>
+<div style="clear:both"></div>
+</a></div><table class="carpools"><thead><tr><th>Driver or Passenger</th>
+<th>Description</th>
+<th>Departure time</th>
+<th>Return time</th>
+<th>Frequency</th>
+<th>Contact</th>
+</tr></thead><tbody><tr class="odd"><td>both</td><td>From <b>Pune - Aundh</b> to <b>Pune - Magarpatta City</b><br />Looking for a carpool for my wife currently working at Magarpatta City from Pimpri Waghere.
+Please ...</td><td>08:30 AM</td><td>06:15 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-7562190/username-pravinchavan5"><u>pravinchavan5</u></a></td></tr><tr class="even"><td>both</td><td>From <b>Pune - Kharadi</b> to <b>Pune</b><br />I wanted to car pool from Kharadi to Hinjwadi Phase 2 by following below route - 
+Kharadi -&gt; Vim...</td><td>08:00 AM</td><td>06:00 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-7562167/username-akshri11"><u>akshri11</u></a></td></tr><tr class="odd"><td>passenger</td><td>From <b>Pune - Dapodi</b> to <b>Pune - Magarpatta City</b><br />I travel from YCM(Vallabh Nagar) to Magarpatta City on every week day. I can adjust my timings accor...</td><td>08:00 AM</td><td>06:00 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-7560923/username-ananda"><u>ananda</u></a></td></tr><tr class="even"><td>both</td><td>From <b>Pune</b> to <b>Pune</b><br />I need a car pooling from dighi to kharadi pick up time 9:30 drop time 6:30 pm my phone is 904969057...</td><td>12:00 PM</td><td>12:00 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-7560879/username-mjoseph"><u>mjoseph</u></a></td></tr><tr class="odd"><td>passenger</td><td>From <b>Pune</b> to <b>Pune</b><br />Need car pooling for my wife to travel from Thergaon Near Dange Chowk to Varsha park,baner near gree...</td><td>09:00 AM</td><td>06:30 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-7560229/username-Auro"><u>Auro</u></a></td></tr><tr class="even"><td>driver</td><td>From <b>Pune - Sasane Nagar</b> to <b>Pune - Hadapsar</b><br />Sasanenagar to MIDC Hadapsar(Kirloskar,Honeywell and TCS)
+Vehicle is Tata Indica Xeta V2, AC....</td><td>09:00 AM</td><td>12:00 AM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-7560228/username-Mohanjshelar"><u>Mohanjshelar</u></a></td></tr><tr class="odd"><td>both</td><td>From <b>Pune</b> to <b>Pune - Shivaji Nagar</b><br />Please contact 09922084473 for carpool...</td><td>09:00 AM</td><td>06:00 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-7250498/username-rakeshsinha21"><u>rakeshsinha21</u></a></td></tr><tr class="even"><td>passenger</td><td>From <b>Pune - Kothrud </b> to <b>Pune - Wakde Wadi</b><br />Please contact as early as possible...</td><td>09:30 AM</td><td>06:30 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6921485/username-ShubhangiNimje"><u>ShubhangiNimje</u></a></td></tr><tr class="odd"><td>passenger</td><td>From <b>Pune - Warje Malwadi</b> to <b>Pune - Magarpatta City</b><br />I am looking for 1 vacanny in a car/bus/tempo traveler pool from Karve nagar to Magarpatta city on d...</td><td>09:00 AM</td><td>07:00 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6921483/username-NituNamdev"><u>NituNamdev</u></a></td></tr><tr class="even"><td>both</td><td>From <b>Pune</b> to <b>Pune</b><br />Daily travel from chinchwad to kalyani nagar from my car. contant 9881891865...</td><td>07:45 AM</td><td>05:45 AM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6912698/username-nirajk"><u>nirajk</u></a></td></tr><tr class="odd"><td>both</td><td>From <b>Pune</b> to <b>Pune</b><br />Start from Euro school wakad and reach Akurdi via dange chowk...</td><td>07:30 AM</td><td>05:30 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6909068/username-iitmodi"><u>iitmodi</u></a></td></tr><tr class="even"><td>passenger</td><td>From <b>Pune</b> to <b>Pune</b><br />I need a pick and drop service from Datta Nagar,Thergaon, Chinchwad to Nal Stop,Karve nagar,Pune...</td><td>08:30 AM</td><td>07:00 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6888966/username-sagarrathod"><u>sagarrathod</u></a></td></tr><tr class="odd"><td>both</td><td>From <b>Pune</b> to <b>Pune</b><br />Need car pooling for my wife to travel from chinchwad gaon near darshan hall to koregaon park, germa...</td><td>08:15 AM</td><td>06:00 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6873511/username-rajatsaraf14"><u>rajatsaraf14</u></a></td></tr><tr class="even"><td>both</td><td>From <b>Pune - Ashok Nagar</b> to <b>Pune - Viman Nagar</b><br />Hello. I am looking for a carpool on weekdays from Bhosale Nagar(near Shivaji Nagar), Pune to Viman ...</td><td>08:30 AM</td><td>07:00 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6840411/username-suhitamaz"><u>suhitamaz</u></a></td></tr><tr class="odd"><td>passenger</td><td>From <b>Pune - Balaji Nagar</b> to <b>Pune - Magarpatta City</b><br />Hello Regular passenger require 
+
+From I am daily traveling from Bharti Vidyapeeth to Wagholi anyo...</td><td>07:00 AM</td><td>06:00 AM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6821916/username-nileshahire"><u>nileshahire</u></a></td></tr><tr class="even"><td>passenger</td><td>From <b>Pune - Balaji Nagar</b> to <b>Pune - Kharadi</b><br />...</td><td>07:00 AM</td><td>06:00 PM</td><td>Mon Tue Wed Thu Fri </td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6821771/username-nileshahire"><u>nileshahire</u></a></td></tr><tr class="odd"><td>both</td><td>From <b>Pune</b> to <b>Pune - Kharadi</b><br />Hi, I am looking car pooling facility or cab partners from sinhgad road(wadgaon bk) to EON IT Park,K...</td><td>09:00 AM</td><td>06:30 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6821432/username-amoghtayade"><u>amoghtayade</u></a></td></tr><tr class="even"><td>both</td><td>From <b>Pune</b> to <b>Pune</b><br />Hi I am a working women, looking for car pooling from dhayari (DSK vishwa) to Kharadi....</td><td>08:30 AM</td><td>07:00 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6821289/username-swapnali1"><u>swapnali1</u></a></td></tr><tr class="odd"><td>both</td><td>From <b>Pune</b> to <b>Pune</b><br />pimpri gaon to s.b.raod...</td><td>08:45 AM</td><td>05:45 PM</td><td>Mon Tue Wed Thu Fri Sat </td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6821270/username-311dipali"><u>311dipali</u></a></td></tr><tr class="even"><td>both</td><td>From <b>Pune - Pune University</b> to <b>Pune - Viman Nagar</b><br />Morning and evening Time Flexible...</td><td>10:00 AM</td><td>07:00 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6736893/username-withuanand"><u>withuanand</u></a></td></tr><tr class="odd"><td>passenger</td><td>From <b>Pune</b> to <b>Pune</b><br />...</td><td>08:40 AM</td><td>08:15 PM</td><td>weekdays<br />(Mon -> Fri)</td><td><a href="http://www.carpooling.in/carpool/regular/carpool_id-6733901/username-shradha25"><u>shradha25</u></a></td></tr></tbody></table></div>			
+		</div>
+        
+    </div> <!-- end .container -->
+</body>  
+</html>
